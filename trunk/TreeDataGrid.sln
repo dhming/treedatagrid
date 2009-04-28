@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeDataGrid", "TreeDataGrid\TreeDataGrid.csproj", "{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeDataGrid TestApp", "TreeDataGrid TestApp\TreeDataGrid TestApp.csproj", "{74ED016D-9437-464D-8520-619D5E6F088B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74ED016D-9437-464D-8520-619D5E6F088B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74ED016D-9437-464D-8520-619D5E6F088B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74ED016D-9437-464D-8520-619D5E6F088B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74ED016D-9437-464D-8520-619D5E6F088B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -16,6 +16,16 @@ namespace KDG.Forms.TreeDataGrid
             InitializeComponent();
             this.RowTemplate = new TreeRow() as DataGridViewRow;
 
+            this.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(TreeDataGrid_DataBindingComplete);
+        }
+
+        void TreeDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.ItemAdded ||
+                e.ListChangedType == ListChangedType.ItemDeleted)
+            {
+                
+            }
         }
     }
 }

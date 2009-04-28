@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TreeDataGrid_TestApp
+namespace KDG.Forms.TreeDataGrid
 {
-    public partial class FormMain : Form
+    
+    public partial class TreeDataGrid : DataGridView
     {
-        public FormMain()
+        public TreeDataGrid()
         {
             InitializeComponent();
+            this.RowTemplate = new TreeRow() as DataGridViewRow;
+
         }
     }
 }

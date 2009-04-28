@@ -264,6 +264,8 @@ namespace TreeDataGridTestApp {
             
             private global::System.Data.DataColumn columnid;
             
+            private global::System.Data.DataColumn columnidParent;
+            
             private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnDate;
@@ -302,6 +304,13 @@ namespace TreeDataGridTestApp {
             public global::System.Data.DataColumn idColumn {
                 get {
                     return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn idParentColumn {
+                get {
+                    return this.columnidParent;
                 }
             }
             
@@ -348,10 +357,11 @@ namespace TreeDataGridTestApp {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public TestTableRow AddTestTableRow(System.Guid id, string Name, System.DateTime Date) {
+            public TestTableRow AddTestTableRow(System.Guid id, System.Guid idParent, string Name, System.DateTime Date) {
                 TestTableRow rowTestTableRow = ((TestTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
+                        idParent,
                         Name,
                         Date};
                 rowTestTableRow.ItemArray = columnValuesArray;
@@ -379,6 +389,7 @@ namespace TreeDataGridTestApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
+                this.columnidParent = base.Columns["idParent"];
                 this.columnName = base.Columns["Name"];
                 this.columnDate = base.Columns["Date"];
             }
@@ -387,6 +398,8 @@ namespace TreeDataGridTestApp {
             private void InitClass() {
                 this.columnid = new global::System.Data.DataColumn("id", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
+                this.columnidParent = new global::System.Data.DataColumn("idParent", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidParent);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -539,6 +552,21 @@ namespace TreeDataGridTestApp {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.Guid idParent {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableTestTable.idParentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idParent\' in table \'TestTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTestTable.idParentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string Name {
                 get {
                     try {
@@ -576,6 +604,16 @@ namespace TreeDataGridTestApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetidNull() {
                 this[this.tableTestTable.idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsidParentNull() {
+                return this.IsNull(this.tableTestTable.idParentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetidParentNull() {
+                this[this.tableTestTable.idParentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

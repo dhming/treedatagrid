@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TreeDataGrid TestApp")]
+[assembly: AssemblyTitle("TreeDataGridTestApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Weatherford")]
-[assembly: AssemblyProduct("TreeDataGrid TestApp")]
+[assembly: AssemblyProduct("TreeDataGridTestApp")]
 [assembly: AssemblyCopyright("Copyright © Weatherford 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0316cde8-1304-4aae-9af6-0907548d7fc1")]
+[assembly: Guid("4eb93f7f-a600-4b79-91e9-c30f6512bd5a")]
 
 // Version information for an assembly consists of the following four values:
 //

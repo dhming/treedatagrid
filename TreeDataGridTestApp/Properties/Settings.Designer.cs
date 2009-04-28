@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TreeDataGrid_TestApp.Properties
+namespace TreeDataGridTestApp.Properties
 {
 
 

@@ -17,26 +17,39 @@ namespace KDG.Forms.TreeDataGrid
         {
             _child = new List<TreeRow>();
         }
+        public TreeRow(DataGridView dgv)
+            : this()
+        {
+            //this.DataGridView = dgv;
+            //this.Cells.AddRange(dgv.Cell)
+        }
 
+        [Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
+        ]
         public List<TreeRow> Child
         {
             get { return _child; }
             set { _child = value; }
         }
 
-        [Bindable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Bindable(false)
+            //, DesignerSerializationVisibility(DesignerSerializationVisibility.Content)
+        ]
         public TreeRow ParentRow
         {
             get { return _parentRow; }
             set { _parentRow = value; }
         }
-        [Bindable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Bindable(false)
+            //, DesignerSerializationVisibility(DesignerSerializationVisibility.Content)
+        ]
         public int Level
         {
             get { return _level; }
             set { _level = value; }
         }
-
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public bool Expanded
         {
             get { return _expanded; }
@@ -46,6 +59,22 @@ namespace KDG.Forms.TreeDataGrid
 
                 foreach (TreeRow childRow in _child)
                     childRow.Visible = value;
+            }
+        }
+
+        internal void Expand()
+        {
+            foreach (TreeRow tr in this._child)
+                _expanded = tr.Visible = true;
+
+        }
+
+        internal void Collupse()
+        {
+            foreach (TreeRow tr in this._child)
+            {
+                _expanded = tr.Visible = false;
+                tr.Collupse();
             }
         }
     }

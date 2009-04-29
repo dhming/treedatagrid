@@ -26,7 +26,14 @@ namespace TreeDataGridTestApp
             this.dataSet11.TestTable.AddTestTableRow(g1, Guid.Empty, "111111111", new DateTime(2001, 1, 1));
             this.dataSet11.TestTable.AddTestTableRow(g2, g1, "22222", new DateTime(2002, 1, 1));
             this.dataSet11.TestTable.AddTestTableRow(g3, g1, "33333333", new DateTime(2003, 1, 1));
-            this.dataSet11.TestTable.AddTestTableRow(g4, Guid.Empty, "44", new DateTime(2004, 1, 1));
+            this.dataSet11.TestTable.AddTestTableRow(g4, g3, "44", new DateTime(2004, 1, 1));
+
+            object obj = this.dataGridView1.BindingContext;
+        }
+
+        private void testTableBindingSource_BindingComplete(object sender, BindingCompleteEventArgs e)
+        {
+
         }
     }
 }

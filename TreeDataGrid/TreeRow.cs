@@ -77,5 +77,10 @@ namespace KDG.Forms.TreeDataGrid
                 tr.Collupse();
             }
         }
+
+        public bool HasChildren
+        {
+            get { return this._child.Count > 0 ? true : false; }
+        }
     }
 }

@@ -10,12 +10,13 @@ namespace KDG.Forms.TreeDataGrid
     {
         private const int INDENT_WIDTH = 20;
         private const int INDENT_MARGIN = 5;
-        Brush br = null;
+        Brush br = new SolidBrush(Color.Gray);
+        Pen pen = new Pen(Color.Black);
 
         public TreeCell()
             : base()
         {
-            br = new SolidBrush(Color.Gray);
+
         }
 
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
@@ -25,8 +26,30 @@ namespace KDG.Forms.TreeDataGrid
                 cellBounds.Width - markerWidth, cellBounds.Height);
             base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
 
-            Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
-            graphics.FillRectangle(br, offset);
+            {
+                Rectangle offset = new Rectangle(cellBounds.X , cellBounds.Y , markerWidth, cellBounds.Height );
+                graphics.FillRectangle(br, offset);
+                graphics.DrawRectangle(pen, offset);
+            }
+        }
+
+        protected override void OnMouseDoubleClick(DataGridViewCellMouseEventArgs e)
+        {
+            base.OnMouseDoubleClick(e);
+
+            int markerWidth = INDENT_WIDTH * (Level + 1);
+            //Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
+
+            if (e.Button == MouseButtons.Left)
+            {
+              //  if (offset.Contains(e.Location))
+                TreeRow tr=this.OwningRow as TreeRow;
+                if (tr.Expanded)
+                    tr.Collupse();
+                else
+                    tr.Expand();
+            }
+
         }
 
         public int Level

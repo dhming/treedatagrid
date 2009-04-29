@@ -42,10 +42,10 @@ namespace TreeDataGridTestApp
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeDataGrid1 = new KDG.Forms.TreeDataGrid.TreeDataGrid();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn4 = new KDG.Forms.TreeDataGrid.TreeColumn();
-            this.idParentDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idParentDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn5 = new KDG.Forms.TreeDataGrid.TreeColumn();
+            this.dateDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -134,17 +134,16 @@ namespace TreeDataGridTestApp
             this.treeDataGrid1.AutoGenerateColumns = false;
             this.treeDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.treeDataGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn4,
-            this.idParentDataGridViewTextBoxColumn4,
-            this.nameDataGridViewTextBoxColumn4,
-            this.dateDataGridViewTextBoxColumn4});
+            this.idDataGridViewTextBoxColumn5,
+            this.idParentDataGridViewTextBoxColumn5,
+            this.nameDataGridViewTextBoxColumn5,
+            this.dateDataGridViewTextBoxColumn5});
             this.treeDataGrid1.GridDataMember = "";
             this.treeDataGrid1.GridDataSource = this.testTableBindingSource;
-            this.treeDataGrid1.Key = "idDataGridViewTextBoxColumn4";
+            this.treeDataGrid1.Key = "idDataGridViewTextBoxColumn5";
             this.treeDataGrid1.Location = new System.Drawing.Point(12, 174);
             this.treeDataGrid1.Name = "treeDataGrid1";
-            this.treeDataGrid1.ParentKey = "idParentDataGridViewTextBoxColumn4";
-
+            this.treeDataGrid1.ParentKey = "idParentDataGridViewTextBoxColumn5";
             this.treeDataGrid1.Size = new System.Drawing.Size(564, 256);
             this.treeDataGrid1.TabIndex = 1;
             // 
@@ -153,31 +152,32 @@ namespace TreeDataGridTestApp
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             // 
-            // idDataGridViewTextBoxColumn4
+            // idDataGridViewTextBoxColumn5
             // 
-            this.idDataGridViewTextBoxColumn4.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn4.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn4.Name = "idDataGridViewTextBoxColumn4";
-            this.idDataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.idDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn5.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn5.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn5.Name = "idDataGridViewTextBoxColumn5";
+            this.Visible = false;
             // 
-            // idParentDataGridViewTextBoxColumn4
+            // idParentDataGridViewTextBoxColumn5
             // 
-            this.idParentDataGridViewTextBoxColumn4.DataPropertyName = "idParent";
-            this.idParentDataGridViewTextBoxColumn4.HeaderText = "idParent";
-            this.idParentDataGridViewTextBoxColumn4.Name = "idParentDataGridViewTextBoxColumn4";
+            this.idParentDataGridViewTextBoxColumn5.DataPropertyName = "idParent";
+            this.idParentDataGridViewTextBoxColumn5.HeaderText = "idParent";
+            this.idParentDataGridViewTextBoxColumn5.Name = "idParentDataGridViewTextBoxColumn5";
+            this.Visible = false;
             // 
-            // nameDataGridViewTextBoxColumn4
+            // nameDataGridViewTextBoxColumn5
             // 
-            this.nameDataGridViewTextBoxColumn4.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
+            this.nameDataGridViewTextBoxColumn5.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn5.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn5.Name = "nameDataGridViewTextBoxColumn5";
+            this.nameDataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // dateDataGridViewTextBoxColumn4
+            // dateDataGridViewTextBoxColumn5
             // 
-            this.dateDataGridViewTextBoxColumn4.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn4.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn4.Name = "dateDataGridViewTextBoxColumn4";
+            this.dateDataGridViewTextBoxColumn5.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn5.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn5.Name = "dateDataGridViewTextBoxColumn5";
             // 
             // FormMain
             // 
@@ -228,6 +228,10 @@ namespace TreeDataGridTestApp
         private System.Windows.Forms.DataGridViewTextBoxColumn idParentDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idParentDataGridViewTextBoxColumn5;
+        private KDG.Forms.TreeDataGrid.TreeColumn nameDataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn5;
 
        
     }

@@ -10,7 +10,7 @@ namespace KDG.Forms.TreeDataGrid
     {
         private const int INDENT_WIDTH = 20;
         private const int INDENT_MARGIN = 5;
-        Brush br = new SolidBrush(Color.Gray);
+        Brush br = new SolidBrush(Color.LightGray);
         Pen pen = new Pen(Color.Black);
 
         public TreeCell()
@@ -22,14 +22,25 @@ namespace KDG.Forms.TreeDataGrid
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             int markerWidth = INDENT_WIDTH * (Level + 1);
-            Rectangle newCellBounds = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y, 
+            Rectangle newCellBounds = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y,
                 cellBounds.Width - markerWidth, cellBounds.Height);
             base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
 
             {
-                Rectangle offset = new Rectangle(cellBounds.X , cellBounds.Y , markerWidth, cellBounds.Height );
+                Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
                 graphics.FillRectangle(br, offset);
                 graphics.DrawRectangle(pen, offset);
+
+                if (!(this.OwningRow as TreeRow).HasChildren)
+                    graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, offset);
+                else
+                {
+                    if ((this.OwningRow as TreeRow).Expanded)
+                        graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, offset);
+                    else
+                        graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, offset);
+                }
+
             }
         }
 
@@ -42,8 +53,8 @@ namespace KDG.Forms.TreeDataGrid
 
             if (e.Button == MouseButtons.Left)
             {
-              //  if (offset.Contains(e.Location))
-                TreeRow tr=this.OwningRow as TreeRow;
+                //  if (offset.Contains(e.Location))
+                TreeRow tr = this.OwningRow as TreeRow;
                 if (tr.Expanded)
                     tr.Collupse();
                 else

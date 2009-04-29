@@ -45,8 +45,28 @@
     <Compile Include="TreeDataGrid.Designer.cs">
       <DependentUpon>TreeDataGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\TreeDataGridResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TreeDataGridResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="TreeRow.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\TreeDataGridResource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TreeDataGridResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bCollupsed.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bExpanded.bmp" />
+    <None Include="Resources\bHasNoChild.bmp" />
+    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

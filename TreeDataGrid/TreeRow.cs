@@ -14,43 +14,66 @@ namespace KDG.Forms.TreeDataGrid
         private int _level = 0;
         private object _dataBountItem;
 
+        //-------------------------------------------------------------------------------------------
+        // Constructors
+        //-------------------------------------------------------------------------------------------
         public TreeRow()
         {
             _child = new List<TreeRow>();
         }
-        public TreeRow(DataGridView dgv)
-            : this()
+
+        //-------------------------------------------------------------------------------------------
+        // Methods
+        //-------------------------------------------------------------------------------------------
+        internal void Expand()
         {
-            //this.DataGridView = dgv;
-            //this.Cells.AddRange(dgv.Cell)
+            foreach (TreeRow tr in this._child)
+                _expanded = tr.Visible = true;
+
+        }
+        internal void Collupse()
+        {
+            foreach (TreeRow tr in this._child)
+            {
+                _expanded = tr.Visible = false;
+                tr.Collupse();
+            }
         }
 
-        [Bindable(false),
+        //-------------------------------------------------------------------------------------------
+        // Properties
+        //-------------------------------------------------------------------------------------------
+        [Browsable(false),
+        Bindable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
-        ]
+        EditorBrowsable(EditorBrowsableState.Never)]
         public List<TreeRow> Child
         {
             get { return _child; }
             set { _child = value; }
         }
-
-        [Bindable(false)
-            , DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
-        ]
+        [Browsable(false),
+        Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
         public TreeRow ParentRow
         {
             get { return _parentRow; }
             set { _parentRow = value; }
         }
-        [Bindable(false)
-            , DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
-        ]
+        [Browsable(false),
+        Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
         public int Level
         {
             get { return _level; }
             set { _level = value; }
         }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false),
+        Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
         public bool Expanded
         {
             get { return _expanded; }
@@ -62,35 +85,22 @@ namespace KDG.Forms.TreeDataGrid
                     childRow.Visible = value;
             }
         }
-
-        internal void Expand()
-        {
-            foreach (TreeRow tr in this._child)
-                _expanded = tr.Visible = true;
-
-        }
-
-        internal void Collupse()
-        {
-            foreach (TreeRow tr in this._child)
-            {
-                _expanded = tr.Visible = false;
-                tr.Collupse();
-            }
-        }
-
+        [Browsable(false),
+        Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
         public bool HasChildren
         {
             get { return this._child.Count > 0 ? true : false; }
         }
-
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false),
+        Bindable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
         new public object DataBoundItem
         {
             get { return _dataBountItem; }
             set { _dataBountItem = value; }
         }
-
     }
 }

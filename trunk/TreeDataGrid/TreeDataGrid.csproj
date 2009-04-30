@@ -70,7 +70,6 @@
   <ItemGroup>
     <Content Include="Resources\bExpanded.bmp" />
     <None Include="Resources\bHasNoChild.bmp" />
-    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

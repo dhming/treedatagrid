@@ -10,17 +10,20 @@ namespace KDG.Forms.TreeDataGrid
     {
         private const int INDENT_WIDTH = 20;
         private const int INDENT_MARGIN = 5;
-        Brush br = new SolidBrush(Color.LightGray);
-        Pen pen = new Pen(Color.Black);
 
-        public TreeCell()
-            : base()
-        {
-            //this.ReadOnly = true;
-            
-        }
+        //-------------------------------------------------------------------------------------------
+        // Constructors
+        //-------------------------------------------------------------------------------------------
+        public TreeCell() : base() { }
 
-        protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
+        //-------------------------------------------------------------------------------------------
+        // Overriders
+        //-------------------------------------------------------------------------------------------
+        protected override void Paint(System.Drawing.Graphics graphics, 
+            System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, 
+            int rowIndex, DataGridViewElementStates cellState, object value, 
+            object formattedValue, string errorText, DataGridViewCellStyle cellStyle, 
+            DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             int markerWidth = INDENT_WIDTH * (Level);
             int cellBoundsWidth = INDENT_WIDTH * (Level + 1);
@@ -35,70 +38,30 @@ namespace KDG.Forms.TreeDataGrid
             base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, abs, paintParts);
             try
             {
+                Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, cellBoundsWidth, cellBounds.Height);
+                base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, abs, DataGridViewPaintParts.Border);
 
+                Image im = Properties.TreeDataGridResource.bHasNoChild;
+                Rectangle imageRect = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y, im.Width, im.Height);
+
+                Point p = new Point(cellBounds.X + markerWidth + (INDENT_WIDTH - im.Width) / 2, (cellBounds.Height - im.Height) / 2 + cellBounds.Y);
+
+                if (!(this.OwningRow as TreeRow).HasChildren)
+                    graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, p);
+                else
                 {
-                    Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, cellBoundsWidth, cellBounds.Height);
-                    //Brush br1 = new SolidBrush(cellStyle.BackColor);
-                    //graphics.FillRectangle(br1, offset);
-
-                    //abs.Bottom = advancedBorderStyle.Bottom;
-                    //abs.All = DataGridViewAdvancedCellBorderStyle.None;
-                    //abs.Right = DataGridViewAdvancedCellBorderStyle.None;
-                    //abs.Bottom = advancedBorderStyle.Bottom;
-                    base.Paint(graphics,
-                        clipBounds,
-                        cellBounds,
-                        rowIndex,
-                        cellState,
-                        value,
-                        formattedValue,
-                        errorText,
-                        cellStyle,
-                        //advancedBorderStyle,
-                        abs,
-                        DataGridViewPaintParts.Border);
-                    
-                    
-                    //base.Paint(graphics,
-                    //    clipBounds,
-                    //    offset,
-                    //    rowIndex,
-                    //    cellState,
-                    //    value,
-                    //    formattedValue,
-                    //    errorText,
-                    //    cellStyle,
-                    //    abs,
-                    //    DataGridViewPaintParts.Background);
-
-                    Image im = Properties.TreeDataGridResource.bHasNoChild;
-                    Rectangle imageRect = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y, im.Width, im.Height);
-
-                    Point p = new Point(cellBounds.X + markerWidth + (INDENT_WIDTH - im.Width) / 2, (cellBounds.Height - im.Height) / 2 + cellBounds.Y);
-
-                    if (!(this.OwningRow as TreeRow).HasChildren)
-                        graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, p);
+                    if ((this.OwningRow as TreeRow).Expanded)
+                        graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, p);
                     else
-                    {
-                        if ((this.OwningRow as TreeRow).Expanded)
-                            graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, p);
-                        else
-                            graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, p);
-                    }
+                        graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, p);
                 }
             }
             catch (Exception)
             {
             }
         }
-
         protected override void OnMouseDoubleClick(DataGridViewCellMouseEventArgs e)
         {
-
-
-            int markerWidth = INDENT_WIDTH * (Level + 1);
-            //Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
-
             if (e.Button == MouseButtons.Left)
             {
                 //  if (offset.Contains(e.Location))
@@ -110,9 +73,11 @@ namespace KDG.Forms.TreeDataGrid
             }
             else
                 base.OnMouseDoubleClick(e);
-
         }
 
+        //-------------------------------------------------------------------------------------------
+        // Properties
+        //-------------------------------------------------------------------------------------------
         public int Level
         {
             get

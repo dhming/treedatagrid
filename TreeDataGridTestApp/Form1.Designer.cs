@@ -32,16 +32,16 @@ namespace TreeDataGridTestApp
             this.dataSet11 = new TreeDataGridTestApp.DataSet1();
             this.testTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idParentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idParentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeDataGrid1 = new KDG.Forms.TreeDataGrid.TreeDataGrid();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,32 +77,8 @@ namespace TreeDataGridTestApp
             this.dataGridView1.DataSource = this.testTableBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 183);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(498, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(445, 150);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // idParentDataGridViewTextBoxColumn
-            // 
-            this.idParentDataGridViewTextBoxColumn.DataPropertyName = "idParent";
-            this.idParentDataGridViewTextBoxColumn.HeaderText = "idParent";
-            this.idParentDataGridViewTextBoxColumn.Name = "idParentDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             // 
             // textBox1
             // 
@@ -114,7 +90,7 @@ namespace TreeDataGridTestApp
             this.textBox1.Location = new System.Drawing.Point(12, 360);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(498, 20);
+            this.textBox1.Size = new System.Drawing.Size(445, 20);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
@@ -127,7 +103,7 @@ namespace TreeDataGridTestApp
             this.textBox2.Location = new System.Drawing.Point(12, 386);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(498, 20);
+            this.textBox2.Size = new System.Drawing.Size(445, 20);
             this.textBox2.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -154,11 +130,36 @@ namespace TreeDataGridTestApp
             this.dataGridViewTextBoxColumn4.HeaderText = "Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // idParentDataGridViewTextBoxColumn
+            // 
+            this.idParentDataGridViewTextBoxColumn.DataPropertyName = "idParent";
+            this.idParentDataGridViewTextBoxColumn.HeaderText = "idParent";
+            this.idParentDataGridViewTextBoxColumn.Name = "idParentDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
             // treeDataGrid1
             // 
             this.treeDataGrid1.AllowUserToAddRows = false;
             this.treeDataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeDataGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.treeDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.treeDataGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -171,8 +172,9 @@ namespace TreeDataGridTestApp
             this.treeDataGrid1.Location = new System.Drawing.Point(12, 12);
             this.treeDataGrid1.Name = "treeDataGrid1";
             this.treeDataGrid1.ParentKey = "colIdParent";
+            this.treeDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.treeDataGrid1.RowHeadersVisible = false;
-            this.treeDataGrid1.Size = new System.Drawing.Size(498, 146);
+            this.treeDataGrid1.Size = new System.Drawing.Size(445, 146);
             this.treeDataGrid1.TabIndex = 0;
             // 
             // colId
@@ -205,7 +207,7 @@ namespace TreeDataGridTestApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 448);
+            this.ClientSize = new System.Drawing.Size(469, 448);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);

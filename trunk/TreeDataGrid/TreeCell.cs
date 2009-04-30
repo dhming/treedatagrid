@@ -28,7 +28,11 @@ namespace KDG.Forms.TreeDataGrid
             Rectangle newCellBounds = new Rectangle(cellBounds.X + cellBoundsWidth, cellBounds.Y,
                 cellBounds.Width - cellBoundsWidth, cellBounds.Height);
 
-            base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
+            DataGridViewAdvancedBorderStyle abs = new DataGridViewAdvancedBorderStyle();
+            abs.Bottom = advancedBorderStyle.Bottom;
+
+            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, DataGridViewPaintParts.Background | DataGridViewPaintParts.SelectionBackground);
+            base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, abs, paintParts);
             try
             {
 
@@ -36,6 +40,11 @@ namespace KDG.Forms.TreeDataGrid
                     Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, cellBoundsWidth, cellBounds.Height);
                     //Brush br1 = new SolidBrush(cellStyle.BackColor);
                     //graphics.FillRectangle(br1, offset);
+
+                    //abs.Bottom = advancedBorderStyle.Bottom;
+                    //abs.All = DataGridViewAdvancedCellBorderStyle.None;
+                    //abs.Right = DataGridViewAdvancedCellBorderStyle.None;
+                    //abs.Bottom = advancedBorderStyle.Bottom;
                     base.Paint(graphics,
                         clipBounds,
                         cellBounds,
@@ -45,23 +54,22 @@ namespace KDG.Forms.TreeDataGrid
                         formattedValue,
                         errorText,
                         cellStyle,
-                        advancedBorderStyle,
-                        DataGridViewPaintParts.Border);
-                    DataGridViewAdvancedBorderStyle abs = new DataGridViewAdvancedBorderStyle();
-                    abs.All = DataGridViewAdvancedCellBorderStyle.None;
-                    abs.Right = DataGridViewAdvancedCellBorderStyle.None;
-                    abs.Bottom = advancedBorderStyle.Bottom;
-                    base.Paint(graphics,
-                        clipBounds,
-                        offset,
-                        rowIndex,
-                        cellState,
-                        value,
-                        formattedValue,
-                        errorText,
-                        cellStyle,
+                        //advancedBorderStyle,
                         abs,
-                        DataGridViewPaintParts.Background);
+                        DataGridViewPaintParts.Border);
+                    
+                    
+                    //base.Paint(graphics,
+                    //    clipBounds,
+                    //    offset,
+                    //    rowIndex,
+                    //    cellState,
+                    //    value,
+                    //    formattedValue,
+                    //    errorText,
+                    //    cellStyle,
+                    //    abs,
+                    //    DataGridViewPaintParts.Background);
 
                     Image im = Properties.TreeDataGridResource.bHasNoChild;
                     Rectangle imageRect = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y, im.Width, im.Height);

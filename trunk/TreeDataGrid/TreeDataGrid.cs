@@ -119,7 +119,7 @@ namespace KDG.Forms.TreeDataGrid
                     for (int i = 0; i < _bs.List.Count; i++)
                     {
                         DataRowView drv = _bs.List[i] as DataRowView;
-                        if (row.DataBoundItem.Equals(drv.Row))
+                        if (row.DataBoundItem!=null && row.DataBoundItem.Equals(drv.Row))
                         {
                             for (int j = 0; j < _bs.List.Count; j++)
                                 this.SetSelectedRowCore(j, false);

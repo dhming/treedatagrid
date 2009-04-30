@@ -21,32 +21,35 @@ namespace KDG.Forms.TreeDataGrid
 
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
-            int markerWidth = INDENT_WIDTH * (Level + 1);
-            Rectangle newCellBounds = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y,
-                cellBounds.Width - markerWidth, cellBounds.Height);
+            int markerWidth = INDENT_WIDTH * (Level);
+            int cellBoundsWidth = INDENT_WIDTH * (Level + 1);
+
+            Rectangle newCellBounds = new Rectangle(cellBounds.X + cellBoundsWidth, cellBounds.Y,
+                cellBounds.Width - cellBoundsWidth, cellBounds.Height);
+
             base.Paint(graphics, clipBounds, newCellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
 
             {
-                Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
+                Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, cellBoundsWidth, cellBounds.Height);
                 graphics.FillRectangle(br, offset);
                 graphics.DrawRectangle(pen, offset);
 
+                Rectangle imageRect = new Rectangle(cellBounds.X + markerWidth, cellBounds.Y, INDENT_WIDTH, cellBounds.Height);
                 if (!(this.OwningRow as TreeRow).HasChildren)
-                    graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, offset);
+                    graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, imageRect);
                 else
                 {
                     if ((this.OwningRow as TreeRow).Expanded)
-                        graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, offset);
+                        graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, imageRect);
                     else
-                        graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, offset);
+                        graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, imageRect);
                 }
-
             }
         }
 
         protected override void OnMouseDoubleClick(DataGridViewCellMouseEventArgs e)
         {
-            base.OnMouseDoubleClick(e);
+
 
             int markerWidth = INDENT_WIDTH * (Level + 1);
             //Rectangle offset = new Rectangle(cellBounds.X, cellBounds.Y, markerWidth, cellBounds.Height);
@@ -60,6 +63,8 @@ namespace KDG.Forms.TreeDataGrid
                 else
                     tr.Expand();
             }
+            else
+                base.OnMouseDoubleClick(e);
 
         }
 

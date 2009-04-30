@@ -33,8 +33,7 @@ namespace KDG.Forms.TreeDataGrid
             // 
             // TreeDataGrid
             // 
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeDataGrid_MouseDown);
-            this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TreeDataGrid_CellMouseClick);
+            this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TreeDataGrid_CellMouseClick_1);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

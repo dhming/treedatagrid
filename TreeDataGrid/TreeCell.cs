@@ -16,7 +16,8 @@ namespace KDG.Forms.TreeDataGrid
         public TreeCell()
             : base()
         {
-
+            //this.ReadOnly = true;
+            
         }
 
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
@@ -37,17 +38,19 @@ namespace KDG.Forms.TreeDataGrid
                     //graphics.FillRectangle(br1, offset);
                     base.Paint(graphics,
                         clipBounds,
-                        cellBounds, 
-                        rowIndex, 
-                        cellState, 
-                        value, 
-                        formattedValue, 
-                        errorText, 
-                        cellStyle, 
-                        advancedBorderStyle, 
+                        cellBounds,
+                        rowIndex,
+                        cellState,
+                        value,
+                        formattedValue,
+                        errorText,
+                        cellStyle,
+                        advancedBorderStyle,
                         DataGridViewPaintParts.Border);
-                    DataGridViewAdvancedBorderStyle abs=new DataGridViewAdvancedBorderStyle();
-                    abs.Bottom=advancedBorderStyle.Bottom;
+                    DataGridViewAdvancedBorderStyle abs = new DataGridViewAdvancedBorderStyle();
+                    abs.All = DataGridViewAdvancedCellBorderStyle.None;
+                    abs.Right = DataGridViewAdvancedCellBorderStyle.None;
+                    abs.Bottom = advancedBorderStyle.Bottom;
                     base.Paint(graphics,
                         clipBounds,
                         offset,

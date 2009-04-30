@@ -18,24 +18,22 @@ namespace KDG.Forms.TreeDataGrid
         private object _gridDataSource = null;
         private string _gridDataMember = string.Empty;
         BindingSource _bs = null;
-        //bool _internalPositionChanged = false;
-
-        //private CurrencyManager _currencyManager = null;
-
+        private bool _waitForLoadData;
 
         public TreeDataGrid()
         {
-            try
-            {
                 InitializeComponent();
                 this.RowTemplate = new TreeRow();
 
                 base.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            }
-            catch (Exception)
-            {
-            }
 
+                base.ColumnAdded += new DataGridViewColumnEventHandler(TreeDataGrid_ColumnAdded);
+
+        }
+
+        void TreeDataGrid_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
 
@@ -119,7 +117,7 @@ namespace KDG.Forms.TreeDataGrid
                     for (int i = 0; i < _bs.List.Count; i++)
                     {
                         DataRowView drv = _bs.List[i] as DataRowView;
-                        if (row.DataBoundItem!=null && row.DataBoundItem.Equals(drv.Row))
+                        if (row.DataBoundItem != null && row.DataBoundItem.Equals(drv.Row))
                         {
                             for (int j = 0; j < _bs.List.Count; j++)
                                 this.SetSelectedRowCore(j, false);
@@ -136,21 +134,26 @@ namespace KDG.Forms.TreeDataGrid
         }
         void _bs_ListChanged(object sender, ListChangedEventArgs e)
         {
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-                SetupRows();
+            if (!_waitForLoadData)
+                if (e.ListChangedType == ListChangedType.ItemAdded)
+                    SetupRows();
         }
         //void _bs_BindingComplete(object sender, BindingCompleteEventArgs e)
         //{
 
         //}
 
-
+        public void BuildTree()
+        {
+            SetupRows();
+        }
 
 
 
 
         private void SetupRows()
         {
+            
             this.Rows.Clear();
             foreach (DataRowView drv in _bs.List)
             {
@@ -232,6 +235,15 @@ namespace KDG.Forms.TreeDataGrid
                 }
             }
         }
+
+
+        [DefaultValue(false)]
+        public bool WaitForLoadData
+        {
+            get { return _waitForLoadData; }
+            set { _waitForLoadData = value; }
+        }
+
 
 
 

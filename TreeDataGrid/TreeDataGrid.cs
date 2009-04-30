@@ -18,6 +18,7 @@ namespace KDG.Forms.TreeDataGrid
         private object _gridDataSource = null;
         private string _gridDataMember = string.Empty;
         BindingSource _bs = null;
+        bool _internalPositionChanged = false;
 
         private CurrencyManager _currencyManager = null;
 
@@ -26,6 +27,8 @@ namespace KDG.Forms.TreeDataGrid
         {
             InitializeComponent();
             this.RowTemplate = new TreeRow();
+
+            base.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
 
@@ -55,23 +58,60 @@ namespace KDG.Forms.TreeDataGrid
                 {
                     _gridDataSource = value;
                     _bs = (_gridDataSource as BindingSource);
+                    _bs.BindingComplete += new BindingCompleteEventHandler(_bs_BindingComplete);
                     _bs.ListChanged += new ListChangedEventHandler(_bs_ListChanged);
+                    _bs.PositionChanged += new EventHandler(_bs_PositionChanged);
 
-                    this.DataSource = value;
+
+                    //this.DataSource = value;
                 }
                 catch (Exception)
                 {
 
-                    
+
                 }
             }
+        }
+
+        void _bs_PositionChanged(object sender, EventArgs e)
+        {
+            //if (!_internalPositionChanged)
+            {
+                if (this.Rows.Count > _bs.Position)
+                {
+                    TreeRow row = this.Rows[_bs.Position] as TreeRow;
+                    for (int i = 0; i < _bs.List.Count; i++)
+                    {
+                        DataRowView drv = _bs.List[i] as DataRowView;
+                        if (row.DataBoundItem.Equals(drv.Row))
+                        {
+                            for (int j = 0; j < _bs.List.Count; j++)
+                                this.SetSelectedRowCore(j, false);
+
+                            this.SetSelectedRowCore(i, true);
+                            return;
+                        }
+                    }
+                }
+            }
+            //else
+            //    _internalPositionChanged = false;
+
+        }
+
+        void _bs_BindingComplete(object sender, BindingCompleteEventArgs e)
+        {
+
         }
 
         [Category("Data")]
         public string GridDataMember
         {
             get { return _gridDataMember; }
-            set { this.DataMember = _gridDataMember = value; }
+            set
+            { //this.DataMember = 
+                _gridDataMember = value;
+            }
         }
 
         void _bs_ListChanged(object sender, ListChangedEventArgs e)
@@ -88,6 +128,7 @@ namespace KDG.Forms.TreeDataGrid
             {
                 int index = this.Rows.Add(this.RowTemplate.Clone());
                 TreeRow insertedRow = this.Rows[index] as TreeRow;
+                insertedRow.DataBoundItem = drv.Row;
                 insertedRow.SetValues(drv.Row.ItemArray);
             }
 
@@ -134,6 +175,36 @@ namespace KDG.Forms.TreeDataGrid
         {
             get { return null; }
             set { ; }
+        }
+
+        new public SelectionMode SelectionMode
+        {
+            get { return this.SelectionMode; }
+            
+        }
+
+
+        private void TreeDataGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void TreeDataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Clicks == 1 && e.RowIndex >= 0)
+            {
+                TreeRow row = this.Rows[e.RowIndex] as TreeRow;
+                for (int i = 0; i < _bs.List.Count; i++)
+                {
+                    DataRowView drv = _bs.List[i] as DataRowView;
+                    if (row.DataBoundItem.Equals(drv.Row))
+                    {
+                        _bs.Position = i;
+                        _internalPositionChanged = true;
+                        return;
+                    }
+                }
+            }
         }
 
 

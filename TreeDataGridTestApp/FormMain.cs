@@ -14,10 +14,15 @@ namespace TreeDataGridTestApp
         {
             InitializeComponent();
 
-            this.Load += new EventHandler(FormMain_Load);
+            //this.Load += new EventHandler(FormMain_Load);
         }
 
         void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_Load_1(object sender, EventArgs e)
         {
             Guid g1 = new Guid("00000000-0000-0000-0000-000000000001");
             Guid g2 = new Guid("00000000-0000-0000-0000-000000000002");

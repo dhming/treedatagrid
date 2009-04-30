@@ -59,6 +59,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TreeDataGridResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TreeDataGrid.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TreeDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bCollupsed.bmp" />

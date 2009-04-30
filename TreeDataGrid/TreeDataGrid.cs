@@ -27,23 +27,9 @@ namespace KDG.Forms.TreeDataGrid
             InitializeComponent();
             this.RowTemplate = new TreeRow();
 
-            this.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(TreeDataGrid_DataBindingComplete);
         }
 
-        void TreeDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            if (e.ListChangedType == ListChangedType.ItemAdded ||
-                e.ListChangedType == ListChangedType.ItemDeleted)
-            {
-                //this.Rows.Clear();
-                if (this.Rows.Count > 2)
-                {
-                    this.Rows[2].Height = 0;
-                    //this.Rows[2].MinimumHeight = 0;
 
-                }
-            }
-        }
 
         [Category("Data"), DefaultValue((string)null)]
         public string Key
@@ -65,11 +51,27 @@ namespace KDG.Forms.TreeDataGrid
             get { return _gridDataSource; }
             set
             {
-                _gridDataSource = value;
-                _bs = (_gridDataSource as BindingSource);
-                _bs.ListChanged += new ListChangedEventHandler(_bs_ListChanged);
+                try
+                {
+                    _gridDataSource = value;
+                    _bs = (_gridDataSource as BindingSource);
+                    _bs.ListChanged += new ListChangedEventHandler(_bs_ListChanged);
 
+                    this.DataSource = value;
+                }
+                catch (Exception)
+                {
+
+                    
+                }
             }
+        }
+
+        [Category("Data")]
+        public string GridDataMember
+        {
+            get { return _gridDataMember; }
+            set { this.DataMember = _gridDataMember = value; }
         }
 
         void _bs_ListChanged(object sender, ListChangedEventArgs e)
@@ -108,22 +110,11 @@ namespace KDG.Forms.TreeDataGrid
             foreach (TreeRow tr in this.Rows)
             {
                 object val = tr.Cells[Key].Value;
-                if (val!=null && val.Equals(p))
+                if (val != null && val.Equals(p))
                     return tr;
             }
 
             return null;
-        }
-
-        void _currencyManager_BindingComplete(object sender, BindingCompleteEventArgs e)
-        {
-
-        }
-        [Category("Data")]
-        public string GridDataMember
-        {
-            get { return _gridDataMember; }
-            set { _gridDataMember = value; }
         }
 
         // This sample does not support databinding
@@ -133,25 +124,19 @@ namespace KDG.Forms.TreeDataGrid
         public new object DataSource
         {
             get { return null; }
-            set { throw new NotSupportedException("The TreeGridView does not support databinding"); }
+            set { ; }
         }
 
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
-        public new object DataMember
+        public new string DataMember
         {
             get { return null; }
-            set { throw new NotSupportedException("The TreeGridView does not support databinding"); }
+            set { ; }
         }
 
-        [Browsable(false),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
-        EditorBrowsable(EditorBrowsableState.Never)]
-        public new DataGridViewRowCollection Rows
-        {
-            get { return base.Rows; }
-        }
+
 
     }
 }

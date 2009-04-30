@@ -25,7 +25,7 @@ namespace KDG.Forms.TreeDataGrid
         }
 
         [Bindable(false),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         ]
         public List<TreeRow> Child
         {
@@ -34,7 +34,7 @@ namespace KDG.Forms.TreeDataGrid
         }
 
         [Bindable(false)
-            //, DesignerSerializationVisibility(DesignerSerializationVisibility.Content)
+            , DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
         ]
         public TreeRow ParentRow
         {
@@ -42,14 +42,14 @@ namespace KDG.Forms.TreeDataGrid
             set { _parentRow = value; }
         }
         [Bindable(false)
-            //, DesignerSerializationVisibility(DesignerSerializationVisibility.Content)
+            , DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
         ]
         public int Level
         {
             get { return _level; }
             set { _level = value; }
         }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Expanded
         {
             get { return _expanded; }

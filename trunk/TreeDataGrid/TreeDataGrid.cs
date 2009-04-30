@@ -25,10 +25,16 @@ namespace KDG.Forms.TreeDataGrid
 
         public TreeDataGrid()
         {
-            InitializeComponent();
-            this.RowTemplate = new TreeRow();
+            try
+            {
+                InitializeComponent();
+                this.RowTemplate = new TreeRow();
 
-            base.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                base.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
+            catch (Exception)
+            {
+            }
 
         }
 
@@ -75,7 +81,8 @@ namespace KDG.Forms.TreeDataGrid
 
         void _bs_PositionChanged(object sender, EventArgs e)
         {
-            //if (!_internalPositionChanged)
+
+            if (!_internalPositionChanged)
             {
                 if (this.Rows.Count > _bs.Position)
                 {
@@ -94,8 +101,8 @@ namespace KDG.Forms.TreeDataGrid
                     }
                 }
             }
-            //else
-            //    _internalPositionChanged = false;
+            else
+                _internalPositionChanged = false;
 
         }
 
@@ -116,8 +123,14 @@ namespace KDG.Forms.TreeDataGrid
 
         void _bs_ListChanged(object sender, ListChangedEventArgs e)
         {
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-                SetupRows();
+            try
+            {
+                if (e.ListChangedType == ListChangedType.ItemAdded)
+                    SetupRows();
+            }
+            catch (Exception)
+            {
+            }
 
         }
 
@@ -191,19 +204,25 @@ namespace KDG.Forms.TreeDataGrid
 
         private void TreeDataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Clicks == 1 && e.RowIndex >= 0)
+            try
             {
-                TreeRow row = this.Rows[e.RowIndex] as TreeRow;
-                for (int i = 0; i < _bs.List.Count; i++)
+                if (e.Clicks == 1 && e.RowIndex >= 0)
                 {
-                    DataRowView drv = _bs.List[i] as DataRowView;
-                    if (row.DataBoundItem.Equals(drv.Row))
+                    TreeRow row = this.Rows[e.RowIndex] as TreeRow;
+                    for (int i = 0; i < _bs.List.Count; i++)
                     {
-                        _bs.Position = i;
-                        _internalPositionChanged = true;
-                        return;
+                        DataRowView drv = _bs.List[i] as DataRowView;
+                        if (row.DataBoundItem.Equals(drv.Row))
+                        {
+                            _internalPositionChanged = true;
+                            _bs.Position = i;
+                            return;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
             }
         }
 

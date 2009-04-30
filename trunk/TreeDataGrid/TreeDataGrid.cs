@@ -18,9 +18,9 @@ namespace KDG.Forms.TreeDataGrid
         private object _gridDataSource = null;
         private string _gridDataMember = string.Empty;
         BindingSource _bs = null;
-        bool _internalPositionChanged = false;
+        //bool _internalPositionChanged = false;
 
-        private CurrencyManager _currencyManager = null;
+        //private CurrencyManager _currencyManager = null;
 
 
         public TreeDataGrid()
@@ -54,6 +54,36 @@ namespace KDG.Forms.TreeDataGrid
             set { _parentKey = value; }
         }
 
+        // This sample does not support databinding
+        [Browsable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
+        public new object DataSource
+        {
+            get { return null; }
+            set { ; }
+        }
+
+        [Browsable(false),
+        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+        EditorBrowsable(EditorBrowsableState.Never)]
+        public new string DataMember
+        {
+            get { return null; }
+            set { ; }
+        }
+
+        [Category("Data")]
+        public string GridDataMember
+        {
+            get { return _gridDataMember; }
+            set
+            { //this.DataMember = 
+                _gridDataMember = value;
+            }
+        }
+
+
         [RefreshProperties(RefreshProperties.Repaint), DefaultValue((string)null), Category("Data"), AttributeProvider(typeof(IListSource))]
         public object GridDataSource
         {
@@ -64,7 +94,7 @@ namespace KDG.Forms.TreeDataGrid
                 {
                     _gridDataSource = value;
                     _bs = (_gridDataSource as BindingSource);
-                    _bs.BindingComplete += new BindingCompleteEventHandler(_bs_BindingComplete);
+                    //_bs.BindingComplete += new BindingCompleteEventHandler(_bs_BindingComplete);
                     _bs.ListChanged += new ListChangedEventHandler(_bs_ListChanged);
                     _bs.PositionChanged += new EventHandler(_bs_PositionChanged);
 
@@ -81,8 +111,7 @@ namespace KDG.Forms.TreeDataGrid
 
         void _bs_PositionChanged(object sender, EventArgs e)
         {
-
-            if (!_internalPositionChanged)
+            //if (!_internalPositionChanged)
             {
                 if (this.Rows.Count > _bs.Position)
                 {
@@ -101,38 +130,24 @@ namespace KDG.Forms.TreeDataGrid
                     }
                 }
             }
-            else
-                _internalPositionChanged = false;
+            //else
+            //    _internalPositionChanged = false;
 
         }
-
-        void _bs_BindingComplete(object sender, BindingCompleteEventArgs e)
-        {
-
-        }
-
-        [Category("Data")]
-        public string GridDataMember
-        {
-            get { return _gridDataMember; }
-            set
-            { //this.DataMember = 
-                _gridDataMember = value;
-            }
-        }
-
         void _bs_ListChanged(object sender, ListChangedEventArgs e)
         {
-            try
-            {
-                if (e.ListChangedType == ListChangedType.ItemAdded)
-                    SetupRows();
-            }
-            catch (Exception)
-            {
-            }
-
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+                SetupRows();
         }
+        //void _bs_BindingComplete(object sender, BindingCompleteEventArgs e)
+        //{
+
+        //}
+
+
+
+
+
 
         private void SetupRows()
         {
@@ -171,58 +186,50 @@ namespace KDG.Forms.TreeDataGrid
             return null;
         }
 
-        // This sample does not support databinding
-        [Browsable(false),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
-        EditorBrowsable(EditorBrowsableState.Never)]
-        public new object DataSource
-        {
-            get { return null; }
-            set { ; }
-        }
+
 
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
-        public new string DataMember
+        new public DataGridViewSelectionMode SelectionMode
         {
-            get { return null; }
-            set { ; }
-        }
+            get { return base.SelectionMode; }
 
-        new public SelectionMode SelectionMode
-        {
-            get { return this.SelectionMode; }
-            
         }
 
 
-        private void TreeDataGrid_MouseDown(object sender, MouseEventArgs e)
-        {
+        //private void TreeDataGrid_MouseDown(object sender, MouseEventArgs e)
+        //{
 
-        }
+        //}
 
         private void TreeDataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            return;
             try
             {
-                if (e.Clicks == 1 && e.RowIndex >= 0)
-                {
-                    TreeRow row = this.Rows[e.RowIndex] as TreeRow;
-                    for (int i = 0; i < _bs.List.Count; i++)
-                    {
-                        DataRowView drv = _bs.List[i] as DataRowView;
-                        if (row.DataBoundItem.Equals(drv.Row))
-                        {
-                            _internalPositionChanged = true;
-                            _bs.Position = i;
-                            return;
-                        }
-                    }
-                }
+
             }
             catch (Exception)
             {
+            }
+        }
+
+        private void TreeDataGrid_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Clicks == 1 && e.RowIndex >= 0)
+            {
+                TreeRow row = this.Rows[e.RowIndex] as TreeRow;
+                for (int i = 0; i < _bs.List.Count; i++)
+                {
+                    DataRowView drv = _bs.List[i] as DataRowView;
+                    if (row.DataBoundItem.Equals(drv.Row))
+                    {
+                        //_internalPositionChanged = true;
+                        _bs.Position = i;
+                        return;
+                    }
+                }
             }
         }
 

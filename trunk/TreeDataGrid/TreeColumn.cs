@@ -11,6 +11,8 @@ namespace KDG.Forms.TreeDataGrid
         public TreeColumn()
         {
             this.CellTemplate = new TreeCell();
+
+            this.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         //public override DataGridViewCell CellTemplate

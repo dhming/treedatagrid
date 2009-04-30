@@ -12,6 +12,7 @@ namespace KDG.Forms.TreeDataGrid
         private TreeRow _parentRow = null;
         private List<TreeRow> _child = null;
         private int _level = 0;
+        private object _dataBountItem;
 
         public TreeRow()
         {
@@ -82,5 +83,14 @@ namespace KDG.Forms.TreeDataGrid
         {
             get { return this._child.Count > 0 ? true : false; }
         }
+
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        new public object DataBoundItem
+        {
+            get { return _dataBountItem; }
+            set { _dataBountItem = value; }
+        }
+
     }
 }

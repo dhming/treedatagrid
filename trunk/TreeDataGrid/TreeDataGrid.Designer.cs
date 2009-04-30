@@ -28,7 +28,16 @@ namespace KDG.Forms.TreeDataGrid
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // TreeDataGrid
+            // 
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeDataGrid_MouseDown);
+            this.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TreeDataGrid_CellMouseClick);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

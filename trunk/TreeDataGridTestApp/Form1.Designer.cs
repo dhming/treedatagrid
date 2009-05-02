@@ -29,19 +29,20 @@ namespace TreeDataGridTestApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataSet11 = new TreeDataGridTestApp.DataSet1();
             this.testTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idParentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idParentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeDataGrid1 = new KDG.Forms.TreeDataGrid.TreeDataGrid();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +80,30 @@ namespace TreeDataGridTestApp
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(445, 150);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // idParentDataGridViewTextBoxColumn
+            // 
+            this.idParentDataGridViewTextBoxColumn.DataPropertyName = "idParent";
+            this.idParentDataGridViewTextBoxColumn.HeaderText = "idParent";
+            this.idParentDataGridViewTextBoxColumn.Name = "idParentDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             // 
             // textBox1
             // 
@@ -130,30 +155,6 @@ namespace TreeDataGridTestApp
             this.dataGridViewTextBoxColumn4.HeaderText = "Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // idParentDataGridViewTextBoxColumn
-            // 
-            this.idParentDataGridViewTextBoxColumn.DataPropertyName = "idParent";
-            this.idParentDataGridViewTextBoxColumn.HeaderText = "idParent";
-            this.idParentDataGridViewTextBoxColumn.Name = "idParentDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
             // treeDataGrid1
             // 
             this.treeDataGrid1.AllowUserToAddRows = false;
@@ -183,17 +184,22 @@ namespace TreeDataGridTestApp
             // 
             this.colId.HeaderText = "Id";
             this.colId.Name = "colId";
+            this.colId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colId.Visible = false;
             // 
             // colIdParent
             // 
             this.colIdParent.HeaderText = "IdParent";
             this.colIdParent.Name = "colIdParent";
+            this.colIdParent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIdParent.Visible = false;
             // 
             // colName
             // 
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle1;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
@@ -204,6 +210,7 @@ namespace TreeDataGridTestApp
             // 
             this.colDate.HeaderText = "Date";
             this.colDate.Name = "colDate";
+            this.colDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Form1
             // 

@@ -27,6 +27,10 @@ namespace KDG.Forms.TreeDataGrid
             InitializeComponent();
             this.RowTemplate = new TreeRow();
 
+            this.AllowUserToOrderColumns = false;
+            this.AllowUserToAddRows = false;
+            this.AllowUserToDeleteRows = false;
+
             base.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             base.ColumnAdded += new DataGridViewColumnEventHandler(TreeDataGrid_ColumnAdded);
         }

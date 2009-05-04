@@ -4,22 +4,22 @@ using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace KDG.Forms.TreeDataGrid
+namespace KDG.Forms
 {
-    class TreeRow : DataGridViewRow
+    class TreeDataGridViewRow : DataGridViewRow
     {
         bool _expanded = false;
-        private TreeRow _parentRow = null;
-        private List<TreeRow> _child = null;
+        private TreeDataGridViewRow _parentRow = null;
+        private List<TreeDataGridViewRow> _child = null;
         private int _level = 0;
         private object _dataBountItem;
 
         //-------------------------------------------------------------------------------------------
         // Constructors
         //-------------------------------------------------------------------------------------------
-        public TreeRow()
+        public TreeDataGridViewRow()
         {
-            _child = new List<TreeRow>();
+            _child = new List<TreeDataGridViewRow>();
         }
 
         //-------------------------------------------------------------------------------------------
@@ -27,13 +27,13 @@ namespace KDG.Forms.TreeDataGrid
         //-------------------------------------------------------------------------------------------
         internal void Expand()
         {
-            foreach (TreeRow tr in this._child)
+            foreach (TreeDataGridViewRow tr in this._child)
                 _expanded = tr.Visible = true;
 
         }
         internal void Collupse()
         {
-            foreach (TreeRow tr in this._child)
+            foreach (TreeDataGridViewRow tr in this._child)
             {
                 _expanded = tr.Visible = false;
                 tr.Collupse();
@@ -47,7 +47,7 @@ namespace KDG.Forms.TreeDataGrid
         Bindable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
-        public List<TreeRow> Child
+        public List<TreeDataGridViewRow> Child
         {
             get { return _child; }
             set { _child = value; }
@@ -56,7 +56,7 @@ namespace KDG.Forms.TreeDataGrid
         Bindable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
-        public TreeRow ParentRow
+        public TreeDataGridViewRow ParentRow
         {
             get { return _parentRow; }
             set { _parentRow = value; }
@@ -81,7 +81,7 @@ namespace KDG.Forms.TreeDataGrid
             {
                 _expanded = value;
 
-                foreach (TreeRow childRow in _child)
+                foreach (TreeDataGridViewRow childRow in _child)
                     childRow.Visible = value;
             }
         }

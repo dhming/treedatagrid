@@ -1,6 +1,6 @@
-namespace KDG.Forms.TreeDataGrid
+namespace KDG.Forms
 {
-    public partial class TreeDataGrid
+    public partial class TreeDataGridView
     {
         /// <summary> 
         /// Required designer variable.

@@ -7,7 +7,7 @@
     <ProjectGuid>{5E2B26DE-6AC2-4A05-B733-E2EABCD7F4A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KDG.Forms.TreeDataGrid</RootNamespace>
+    <RootNamespace>KDG.Forms</RootNamespace>
     <AssemblyName>TreeDataGridLib</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

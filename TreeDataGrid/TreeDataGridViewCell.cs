@@ -4,9 +4,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace KDG.Forms.TreeDataGrid
+namespace KDG.Forms
 {
-    public class TreeCell : DataGridViewTextBoxCell
+    public class TreeDataGridViewCell : DataGridViewTextBoxCell
     {
         private const int INDENT_WIDTH = 20;
         private const int INDENT_MARGIN = 5;
@@ -14,7 +14,7 @@ namespace KDG.Forms.TreeDataGrid
         //-------------------------------------------------------------------------------------------
         // Constructors
         //-------------------------------------------------------------------------------------------
-        public TreeCell() : base() { }
+        public TreeDataGridViewCell() : base() { }
 
         //-------------------------------------------------------------------------------------------
         // Overriders
@@ -46,11 +46,11 @@ namespace KDG.Forms.TreeDataGrid
 
                 Point p = new Point(cellBounds.X + markerWidth + (INDENT_WIDTH - im.Width) / 2, (cellBounds.Height - im.Height) / 2 + cellBounds.Y);
 
-                if (!(this.OwningRow as TreeRow).HasChildren)
+                if (!(this.OwningRow as TreeDataGridViewRow).HasChildren)
                     graphics.DrawImage(Properties.TreeDataGridResource.bHasNoChild, p);
                 else
                 {
-                    if ((this.OwningRow as TreeRow).Expanded)
+                    if ((this.OwningRow as TreeDataGridViewRow).Expanded)
                         graphics.DrawImage(Properties.TreeDataGridResource.bExpanded, p);
                     else
                         graphics.DrawImage(Properties.TreeDataGridResource.bCollupsed, p);
@@ -65,7 +65,7 @@ namespace KDG.Forms.TreeDataGrid
             if (e.Button == MouseButtons.Left)
             {
                 //  if (offset.Contains(e.Location))
-                TreeRow tr = this.OwningRow as TreeRow;
+                TreeDataGridViewRow tr = this.OwningRow as TreeDataGridViewRow;
                 if (tr.Expanded)
                     tr.Collupse();
                 else
@@ -82,8 +82,8 @@ namespace KDG.Forms.TreeDataGrid
         {
             get
             {
-                if (this.OwningRow is TreeRow)
-                    return (this.OwningRow as TreeRow).Level;
+                if (this.OwningRow is TreeDataGridViewRow)
+                    return (this.OwningRow as TreeDataGridViewRow).Level;
 
                 return 0;
             }

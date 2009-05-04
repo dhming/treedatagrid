@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KDG.Forms.TreeDataGrid.Properties {
+namespace KDG.Forms.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KDG.Forms.TreeDataGrid.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KDG.Forms.TreeDataGrid.Properties.TreeDataGridResource", typeof(TreeDataGridResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KDG.Forms.Properties.TreeDataGridResource", typeof(TreeDataGridResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

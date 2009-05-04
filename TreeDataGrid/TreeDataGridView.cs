@@ -7,9 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Design;
 
-namespace KDG.Forms.TreeDataGrid
+namespace KDG.Forms
 {
-    public partial class TreeDataGrid : DataGridView
+    public partial class TreeDataGridView : DataGridView
     {
         private string _key;
         private string _parentKey;
@@ -22,10 +22,10 @@ namespace KDG.Forms.TreeDataGrid
         //-------------------------------------------------------------------------------------------
         // Constructors
         //-------------------------------------------------------------------------------------------
-        public TreeDataGrid()
+        public TreeDataGridView()
         {
             InitializeComponent();
-            this.RowTemplate = new TreeRow();
+            this.RowTemplate = new TreeDataGridViewRow();
 
             this.AllowUserToOrderColumns = false;
             this.AllowUserToAddRows = false;
@@ -47,7 +47,7 @@ namespace KDG.Forms.TreeDataGrid
             }
             if (this.Rows.Count > _bs.Position)
             {
-                TreeRow row = this.Rows[_bs.Position] as TreeRow;
+                TreeDataGridViewRow row = this.Rows[_bs.Position] as TreeDataGridViewRow;
                 for (int i = 0; i < _bs.List.Count; i++)
                 {
                     DataRowView drv = _bs.List[i] as DataRowView;
@@ -72,7 +72,7 @@ namespace KDG.Forms.TreeDataGrid
         {
             if (e.Clicks == 1 && e.RowIndex >= 0)
             {
-                TreeRow row = this.Rows[e.RowIndex] as TreeRow;
+                TreeDataGridViewRow row = this.Rows[e.RowIndex] as TreeDataGridViewRow;
                 for (int i = 0; i < _bs.List.Count; i++)
                 {
                     DataRowView drv = _bs.List[i] as DataRowView;
@@ -103,14 +103,14 @@ namespace KDG.Forms.TreeDataGrid
             foreach (DataRowView drv in _bs.List)
             {
                 int index = this.Rows.Add(this.RowTemplate.Clone());
-                TreeRow insertedRow = this.Rows[index] as TreeRow;
+                TreeDataGridViewRow insertedRow = this.Rows[index] as TreeDataGridViewRow;
                 insertedRow.DataBoundItem = drv.Row;
                 insertedRow.SetValues(drv.Row.ItemArray);
             }
 
-            foreach (TreeRow tr in this.Rows)
+            foreach (TreeDataGridViewRow tr in this.Rows)
             {
-                TreeRow parent = FindParent(tr.Cells[ParentKey].Value);
+                TreeDataGridViewRow parent = FindParent(tr.Cells[ParentKey].Value);
                 if (parent != null)
                 {
                     tr.ParentRow = parent;
@@ -121,9 +121,9 @@ namespace KDG.Forms.TreeDataGrid
                 }
             }
         }
-        private TreeRow FindParent(object p)
+        private TreeDataGridViewRow FindParent(object p)
         {
-            foreach (TreeRow tr in this.Rows)
+            foreach (TreeDataGridViewRow tr in this.Rows)
             {
                 object val = tr.Cells[Key].Value;
                 if (val != null && val.Equals(p))

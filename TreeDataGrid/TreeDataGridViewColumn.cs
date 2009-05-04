@@ -4,16 +4,16 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace KDG.Forms.TreeDataGrid
+namespace KDG.Forms
 {
-    public class TreeColumn : DataGridViewTextBoxColumn
+    public class TreeDataGridViewColumn : DataGridViewTextBoxColumn
     {
         //-------------------------------------------------------------------------------------------
         // Constructors
         //-------------------------------------------------------------------------------------------
-        public TreeColumn()
+        public TreeDataGridViewColumn()
         {
-            this.CellTemplate = new TreeCell();
+            this.CellTemplate = new TreeDataGridViewCell();
             this.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
     }

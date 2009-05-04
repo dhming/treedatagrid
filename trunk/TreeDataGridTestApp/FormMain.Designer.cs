@@ -32,13 +32,13 @@ namespace TreeDataGridTestApp
             this.testDBDataSet1 = new TreeDataGridTestApp.TestDBDataSet();
             this.bsTestDB = new System.Windows.Forms.BindingSource(this.components);
             this.testTableTableAdapter = new TreeDataGridTestApp.TestDBDataSetTableAdapters.TestTableTableAdapter();
-            this.treeDataGrid1 = new KDG.Forms.TreeDataGrid.TreeDataGrid();
+            this.treeDataGrid1 = new KDG.Forms.TreeDataGridView();
             this.csmRow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btAdd = new System.Windows.Forms.Button();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMessages = new KDG.Forms.TreeDataGrid.TreeColumn();
+            this.colMessages = new KDG.Forms.TreeDataGridViewColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.testDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTestDB)).BeginInit();
@@ -165,13 +165,13 @@ namespace TreeDataGridTestApp
         private TestDBDataSet testDBDataSet1;
         private System.Windows.Forms.BindingSource bsTestDB;
         private TreeDataGridTestApp.TestDBDataSetTableAdapters.TestTableTableAdapter testTableTableAdapter;
-        private KDG.Forms.TreeDataGrid.TreeDataGrid treeDataGrid1;
+        private KDG.Forms.TreeDataGridView treeDataGrid1;
         private System.Windows.Forms.ContextMenuStrip csmRow;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdParent;
-        private KDG.Forms.TreeDataGrid.TreeColumn colMessages;
+        private KDG.Forms.TreeDataGridViewColumn colMessages;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
     }
 }

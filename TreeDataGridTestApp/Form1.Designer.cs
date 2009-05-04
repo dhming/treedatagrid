@@ -43,10 +43,10 @@ namespace TreeDataGridTestApp
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treeDataGrid1 = new KDG.Forms.TreeDataGrid.TreeDataGrid();
+            this.treeDataGrid1 = new KDG.Forms.TreeDataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new KDG.Forms.TreeDataGrid.TreeColumn();
+            this.colName = new KDG.Forms.TreeDataGridViewColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testTableBindingSource)).BeginInit();
@@ -237,7 +237,7 @@ namespace TreeDataGridTestApp
 
         private DataSet1 dataSet11;
         private System.Windows.Forms.BindingSource testTableBindingSource;
-        private KDG.Forms.TreeDataGrid.TreeDataGrid treeDataGrid1;
+        private KDG.Forms.TreeDataGridView treeDataGrid1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idParentDataGridViewTextBoxColumn;
@@ -251,7 +251,7 @@ namespace TreeDataGridTestApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdParent;
-        private KDG.Forms.TreeDataGrid.TreeColumn colName;
+        private KDG.Forms.TreeDataGridViewColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
 
 

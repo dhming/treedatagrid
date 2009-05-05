@@ -33,13 +33,13 @@ namespace TreeDataGridTestApp
             this.bsTestDB = new System.Windows.Forms.BindingSource(this.components);
             this.testTableTableAdapter = new TreeDataGridTestApp.TestDBDataSetTableAdapters.TestTableTableAdapter();
             this.treeDataGrid1 = new KDG.Forms.TreeDataGridView();
-            this.csmRow = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btAdd = new System.Windows.Forms.Button();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMessages = new KDG.Forms.TreeDataGridViewColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.csmRow = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.testDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTestDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeDataGrid1)).BeginInit();
@@ -84,32 +84,7 @@ namespace TreeDataGridTestApp
             this.treeDataGrid1.Size = new System.Drawing.Size(597, 230);
             this.treeDataGrid1.TabIndex = 0;
             this.treeDataGrid1.WaitForLoadData = true;
-            // 
-            // csmRow
-            // 
-            this.csmRow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
-            this.csmRow.Name = "csmRow";
-            this.csmRow.Size = new System.Drawing.Size(117, 26);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.addToolStripMenuItem.Text = "Add...";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
-            // 
-            // btAdd
-            // 
-            this.btAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAdd.Location = new System.Drawing.Point(534, 363);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(75, 23);
-            this.btAdd.TabIndex = 2;
-            this.btAdd.Text = "Add";
-            this.btAdd.UseVisualStyleBackColor = true;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
+            this.treeDataGrid1.SetupedRows += new System.EventHandler(this.treeDataGrid1_SetupedRows);
             // 
             // colId
             // 
@@ -141,6 +116,32 @@ namespace TreeDataGridTestApp
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
             this.colDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // csmRow
+            // 
+            this.csmRow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem});
+            this.csmRow.Name = "csmRow";
+            this.csmRow.Size = new System.Drawing.Size(117, 26);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.addToolStripMenuItem.Text = "Add...";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // btAdd
+            // 
+            this.btAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAdd.Location = new System.Drawing.Point(534, 363);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(75, 23);
+            this.btAdd.TabIndex = 2;
+            this.btAdd.Text = "Add";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // FormMain
             // 

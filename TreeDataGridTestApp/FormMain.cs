@@ -10,6 +10,7 @@ namespace TreeDataGridTestApp
 {
     public partial class FormMain : Form
     {
+        int expandIndexRow = -1;
         public FormMain()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace TreeDataGridTestApp
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            expandIndexRow = -1;
             FormNewMessage fnm = new FormNewMessage();
             if (fnm.ShowDialog() == DialogResult.OK)
             {
@@ -48,8 +50,6 @@ namespace TreeDataGridTestApp
 
                 this.testTableTableAdapter.Update(this.testDBDataSet1.TestTable);
 
-
-                //LoadData();
             }
         }
 
@@ -77,6 +77,11 @@ namespace TreeDataGridTestApp
 
                 this.testTableTableAdapter.Update(this.testDBDataSet1.TestTable);
             }
+        }
+
+        private void treeDataGrid1_SetupedRows(object sender, EventArgs e)
+        {
+            treeDataGrid1.ExpandAll();
         }
     }
 }

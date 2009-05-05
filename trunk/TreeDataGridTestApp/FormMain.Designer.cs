@@ -75,10 +75,10 @@ namespace TreeDataGridTestApp
             this.colDate});
             this.treeDataGrid1.GridDataMember = "TestTable";
             this.treeDataGrid1.GridDataSource = this.bsTestDB;
-            this.treeDataGrid1.Key = "colId";
+            this.treeDataGrid1.Key = "Id";
             this.treeDataGrid1.Location = new System.Drawing.Point(12, 12);
             this.treeDataGrid1.Name = "treeDataGrid1";
-            this.treeDataGrid1.ParentKey = "colIdParent";
+            this.treeDataGrid1.ParentKey = "IdParent";
             this.treeDataGrid1.RowHeadersVisible = false;
             this.treeDataGrid1.RowTemplate.ContextMenuStrip = this.csmRow;
             this.treeDataGrid1.Size = new System.Drawing.Size(597, 230);

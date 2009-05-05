@@ -111,6 +111,7 @@ namespace TreeDataGridTestApp
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormNewMessage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormNewMessage";
             this.ResumeLayout(false);
             this.PerformLayout();

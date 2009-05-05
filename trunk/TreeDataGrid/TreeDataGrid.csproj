@@ -37,20 +37,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TreeCell.cs" />
-    <Compile Include="TreeColumn.cs" />
-    <Compile Include="TreeDataGrid.cs">
+    <Compile Include="TreeDataGridViewCell.cs" />
+    <Compile Include="TreeDataGridViewColumn.cs" />
+    <Compile Include="TreeDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TreeDataGrid.Designer.cs">
-      <DependentUpon>TreeDataGrid.cs</DependentUpon>
+    <Compile Include="TreeDataGridView.Designer.cs">
+      <DependentUpon>TreeDataGridView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\TreeDataGridResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TreeDataGridResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="TreeRow.cs" />
+    <Compile Include="TreeDataGridViewRow.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -59,9 +59,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TreeDataGridResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TreeDataGrid.resx">
+    <EmbeddedResource Include="TreeDataGridView.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>TreeDataGrid.cs</DependentUpon>
+      <DependentUpon>TreeDataGridView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

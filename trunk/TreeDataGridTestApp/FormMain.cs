@@ -18,6 +18,11 @@ namespace TreeDataGridTestApp
         private void FormMain_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'testDBDataSet1.TestTable' table. You can move, or remove it, as needed.
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             this.testTableTableAdapter.Fill(this.testDBDataSet1.TestTable);
 
             treeDataGrid1.BuildTree();
@@ -29,13 +34,22 @@ namespace TreeDataGridTestApp
             FormNewMessage fnm = new FormNewMessage();
             if (fnm.ShowDialog() == DialogResult.OK)
             {
-                this.testTableTableAdapter.Insert(
+                //this.testTableTableAdapter.Insert(
+                //    Guid.NewGuid(),
+                //    CurrentRow.id,
+                //    fnm.Message.Message,
+                //    fnm.Message.DateTime);
+
+                this.testDBDataSet1.TestTable.AddTestTableRow(
                     Guid.NewGuid(),
                     CurrentRow.id,
                     fnm.Message.Message,
                     fnm.Message.DateTime);
 
-                this.testTableTableAdapter.Update(testDBDataSet1.TestTable);
+                this.testTableTableAdapter.Update(this.testDBDataSet1.TestTable);
+
+
+                //LoadData();
             }
         }
 
@@ -49,13 +63,19 @@ namespace TreeDataGridTestApp
             FormNewMessage fnm = new FormNewMessage();
             if (fnm.ShowDialog() == DialogResult.OK)
             {
-                this.testTableTableAdapter.Insert(
+                //this.testTableTableAdapter.Insert(
+                //    Guid.NewGuid(),
+                //    Guid.Empty,
+                //    fnm.Message.Message,
+                //    fnm.Message.DateTime);
+
+                this.testDBDataSet1.TestTable.AddTestTableRow(
                     Guid.NewGuid(),
                     Guid.Empty,
                     fnm.Message.Message,
                     fnm.Message.DateTime);
 
-                this.testTableTableAdapter.Update(testDBDataSet1.TestTable);
+                this.testTableTableAdapter.Update(this.testDBDataSet1.TestTable);
             }
         }
     }

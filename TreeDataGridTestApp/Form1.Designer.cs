@@ -170,10 +170,10 @@ namespace TreeDataGridTestApp
             this.colDate});
             this.treeDataGrid1.GridDataMember = "";
             this.treeDataGrid1.GridDataSource = this.testTableBindingSource;
-            this.treeDataGrid1.Key = "colId";
+            this.treeDataGrid1.Key = "Id";
             this.treeDataGrid1.Location = new System.Drawing.Point(12, 12);
             this.treeDataGrid1.Name = "treeDataGrid1";
-            this.treeDataGrid1.ParentKey = "colIdParent";
+            this.treeDataGrid1.ParentKey = "IdParent";
             this.treeDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.treeDataGrid1.RowHeadersVisible = false;
             this.treeDataGrid1.Size = new System.Drawing.Size(445, 308);

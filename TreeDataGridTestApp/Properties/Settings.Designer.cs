@@ -26,8 +26,9 @@ namespace TreeDataGridTestApp.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\TestDB.mdf;Integrated S" +
-            "ecurity=True;User Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\documents\\Visual Studio 2005\\Project" +
+            "s\\KDG\\TreeDataGrid\\TreeDataGridTestApp\\TestDB.mdf;Integrated Security=True;User " +
+            "Instance=True")]
         public string TestDBConnectionString {
             get {
                 return ((string)(this["TestDBConnectionString"]));

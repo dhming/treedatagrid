@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace KDG.Forms
 {
-    class TreeDataGridViewRow : DataGridViewRow
+    public class TreeDataGridViewRow : DataGridViewRow
     {
         bool _expanded = false;
         private TreeDataGridViewRow _parentRow = null;

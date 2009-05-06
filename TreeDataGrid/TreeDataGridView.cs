@@ -17,6 +17,8 @@ namespace KDG.Forms
             private object _node = null;
             private _TreeNode _parent = null;
             private List<_TreeNode> _child;
+            private object _id = null;
+            private object _idParent = null;
 
             public _TreeNode()
             {
@@ -27,26 +29,40 @@ namespace KDG.Forms
             {
                 _node = Node;
             }
-
+            public _TreeNode(object Node, object Id, object IdParent)
+                : this(Node)
+            {
+                _id = Id;
+                _idParent = IdParent;
+            }
             public object Node
             {
                 get { return _node; }
                 set { _node = value; }
             }
-
             public _TreeNode Parent
             {
                 get { return _parent; }
                 set { _parent = value; }
             }
-
             public List<_TreeNode> Child
             {
                 get { return _child; }
                 set { _child = value; }
             }
+            public object Id
+            {
+                get { return _id; }
+                set { _id = value; }
+            }
+            public object IdParent
+            {
+                get { return _idParent; }
+                set { _idParent = value; }
+            }
         }
         private List<_TreeNode> _nodes = new List<_TreeNode>();
+        private List<_TreeNode> _topNodes = new List<_TreeNode>();
 
         private string _key;
         private string _parentKey;
@@ -136,7 +152,7 @@ namespace KDG.Forms
         }
         private void SetupRows()
         {
-            CancelEventArgs cea=new CancelEventArgs();
+            CancelEventArgs cea = new CancelEventArgs();
             if (SetupingRows != null)
             {
                 SetupingRows(this, cea);
@@ -146,28 +162,58 @@ namespace KDG.Forms
 
             this.Rows.Clear();
             _nodes.Clear();
+            _topNodes.Clear();
 
             foreach (DataRowView drv in _bs.List)
             {
-                _TreeNode tn = new _TreeNode(drv);
+                object id = drv.Row[_key];
                 object idParent = drv.Row[_parentKey];
-                //object id = drv.Row[_key];
 
-                _TreeNode parentTn = FindParent(idParent, _nodes, _bs.List);
-                if (parentTn != null)
-                {
-                    tn.Parent = parentTn;
-                    parentTn.Child.Add(tn);
-                }
-                else
-                    _nodes.Add(tn);
+                _TreeNode tn = new _TreeNode(drv, id, idParent);
+                _nodes.Add(tn);
             }
 
-            InsertDataGridRows(_nodes, null);
+            foreach (_TreeNode tn in _nodes)
+            {
+                _TreeNode parentTn = FindParent(_nodes, tn);
+                if (parentTn == null)
+                    _topNodes.Add(tn);
+            }
+
+            foreach (_TreeNode tn in _topNodes)
+            {
+                _nodes.Remove(tn);
+            }
+
+
+
+            bool cont = true;
+            while (cont)
+            {
+                cont = false;
+
+                foreach (_TreeNode tn in _nodes)
+                {
+                    if (tn.Parent == null)
+                    {
+                        _TreeNode parentTn = FindParent(_topNodes, tn);
+                        if (parentTn == null)
+                            cont = true;
+                        else
+                        {
+                            parentTn.Child.Add(tn);
+                            tn.Parent = parentTn;
+                        }
+                    }
+                }
+            }
+
+            InsertDataGridRows(_topNodes, null);
 
             if (SetupedRows != null)
                 SetupedRows(this, new EventArgs());
         }
+
         private void InsertDataGridRows(List<_TreeNode> l, TreeDataGridViewRow parent)
         {
             foreach (_TreeNode tn in l)
@@ -190,32 +236,26 @@ namespace KDG.Forms
             }
         }
         // Find node by 'IdParent' key in BindingSource's rows and in _TreeNode colection
-        private _TreeNode FindParent(object idParent, List<_TreeNode> nodes, IList l)
+        private DataRowView FindInAddedRows(object idParent, IList l)
         {
             foreach (DataRowView drv in l)
             {
-                object id = drv.Row["id"];
+                object id = drv.Row[_key];
                 if (id != null && id.Equals(idParent))
-                {
-                    _TreeNode tn = FindInTreeNode(nodes, drv);
-                    if (tn == null)
-                        tn = new _TreeNode(drv);
-
-                    return tn;
-                }
+                    return drv;
             }
             return null;
         }
         // Find 'DataRowView' in _TreeNode collection
-        private _TreeNode FindInTreeNode(List<_TreeNode> nodes, DataRowView drv)
+        private _TreeNode FindParent(List<_TreeNode> nodes, _TreeNode node)
         {
             foreach (_TreeNode tn in nodes)
             {
-                if (tn.Node.Equals(drv))
+                if (tn.Id.Equals(node.IdParent))
                     return tn;
 
                 // Find in child nodes
-                _TreeNode fc = FindInTreeNode(tn.Child, drv);
+                _TreeNode fc = FindParent(tn.Child, node);
                 if (fc != null)
                     return fc;
             }
